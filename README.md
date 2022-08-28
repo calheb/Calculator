@@ -1,2 +1,2 @@
 # Calculator
-JavaFX simple Calculator app
+Simple calculator app in Java
