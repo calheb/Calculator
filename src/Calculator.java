@@ -1,9 +1,5 @@
 import javax.swing.*;
-import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.RoundRectangle2D;
@@ -21,13 +17,10 @@ public class Calculator implements ActionListener{
     JButton addButton,subButton,mulButton,divButton;
     JButton decButton, equButton, delButton, clrButton, negButton;
     JPanel panel;
-
     Font myFont = new Font("Helvetica",Font.BOLD,25);
     Font myFont2 = new Font("Helvetica",Font.PLAIN,30);
-
     double num1=0,num2=0,result=0;
     char operator;
-
     int mouseX;
     int mouseY;
 
@@ -41,13 +34,10 @@ public class Calculator implements ActionListener{
         frame = new JFrame("Calculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(420, 550);
-
         frame.setLayout(null);
         frame.setResizable(false);
-
-        frame.setLocationRelativeTo(null); //centers frame when program is run;
+        frame.setLocationRelativeTo(null); //centers frame when program is run
         frame.setUndecorated(true);
-
         frame.setShape(new RoundRectangle2D.Double(0, 0, 400, 520, 20, 20 ));
 
         frame.addMouseMotionListener(new MouseMotionAdapter() { //this allows the entire frame to be dragged around the screen
@@ -67,11 +57,8 @@ public class Calculator implements ActionListener{
 
 
         textfield = new JTextField();
-
         textfield.setBounds(50, 45, 300, 50);
-
         textfield.setFont(myFont);
-
         textfield.setEditable(false);
         textfield.setBackground(new Color(217,191,217));
         textfield.setBorder(BorderFactory.createLineBorder(new Color(153, 153, 255),1));
