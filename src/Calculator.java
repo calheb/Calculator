@@ -22,7 +22,8 @@ public class Calculator implements ActionListener{
     JButton decButton, equButton, delButton, clrButton, negButton;
     JPanel panel;
 
-    Font myFont = new Font("Helvetica",Font.PLAIN,30);
+    Font myFont = new Font("Helvetica",Font.BOLD,25);
+    Font myFont2 = new Font("Helvetica",Font.PLAIN,30);
 
     double num1=0,num2=0,result=0;
     char operator;
@@ -67,11 +68,14 @@ public class Calculator implements ActionListener{
 
         textfield = new JTextField();
 
-        textfield.setBounds(50, 35, 300, 50);
+        textfield.setBounds(50, 45, 300, 50);
 
         textfield.setFont(myFont);
 
         textfield.setEditable(false);
+        textfield.setBackground(new Color(217,191,217));
+        textfield.setBorder(BorderFactory.createLineBorder(new Color(153, 153, 255),1));
+
 
 
         ImageIcon closeIcon = new ImageIcon(this.getClass().getResource("/close.png"));
@@ -81,22 +85,44 @@ public class Calculator implements ActionListener{
         closeIcon = new ImageIcon(newimg);
 
 
-        JButton exit = new JButton();
-        exit.setBorderPainted(false);
-        //exit.setBorder(new RoundedBorder(20));
-        exit.setOpaque(false);
+        ImageIcon minIcon = new ImageIcon(this.getClass().getResource("/hide.png"));
 
-        exit.setBounds(360,10,20,20);
-        exit.setIcon(closeIcon);
+        Image image1 = minIcon.getImage();
+        Image newimg1 = image1.getScaledInstance(18, 18,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        minIcon = new ImageIcon(newimg1);
 
+
+        JButton minimize = new JButton();
+        minimize.setFocusPainted(false);
+        minimize.setContentAreaFilled(false);
+        minimize.setBorderPainted(false);
+        minimize.setOpaque(false);
+        minimize.setBounds(345,10,20,20);
+        minimize.setIcon(minIcon);
         ActionListener al = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setState(JFrame.ICONIFIED);
+            }
+        };
+        minimize.addActionListener(al);
+
+
+        JButton exit = new JButton();
+        exit.setFocusPainted(false);
+        exit.setContentAreaFilled(false);
+        exit.setBorderPainted(false);
+        exit.setOpaque(false);
+        exit.setBounds(370,10,20,20);
+        exit.setIcon(closeIcon);
+        ActionListener al1 = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         };
 
-        exit.addActionListener(al);
+        exit.addActionListener(al1);
         addButton = new JButton("+");
 
         subButton = new JButton("-");
@@ -109,11 +135,11 @@ public class Calculator implements ActionListener{
 
         equButton = new JButton("=");
 
-        delButton = new JButton("Del");
+        delButton = new JButton("⌫");
 
-        clrButton = new JButton("Clr");
+        clrButton = new JButton("C");
 
-        negButton = new JButton("(-)");
+        negButton = new JButton("+/-");
 
 
 
@@ -140,41 +166,41 @@ public class Calculator implements ActionListener{
         for(int i =0;i<9;i++) {
 
             functionButtons[i].addActionListener(this);
-
-            functionButtons[i].setFont(myFont);
-
+            functionButtons[i].setFont(myFont2);
             functionButtons[i].setFocusable(false);
+            functionButtons[i].setFocusPainted(false);
+            functionButtons[i].setOpaque(true);
+            functionButtons[i].setBorderPainted(true);
+            functionButtons[i].setBackground(new Color(227, 181, 227));
+            functionButtons[i].setBorder(BorderFactory.createLineBorder(new Color(153, 153, 255),1));
         }
-
 
 
         for(int i =0;i<10;i++) {
-
             numberButtons[i] = new JButton(String.valueOf(i));
-
             numberButtons[i].addActionListener(this);
-
             numberButtons[i].setFont(myFont);
-
             numberButtons[i].setFocusable(false);
+            numberButtons[i].setFocusPainted(false);
+            numberButtons[i].setOpaque(true);
+            numberButtons[i].setBorderPainted(true);
+            numberButtons[i].setBackground(new Color(227, 181, 227));
+            numberButtons[i].setBorder(BorderFactory.createLineBorder(new Color(153, 153, 255),1));
 
-            //numberButtons[i].setContentAreaFilled(false);
+
 
         }
 
+        negButton.setBounds(50,110,90,50);
 
+        delButton.setBounds(260,110,90,50);
 
-        negButton.setBounds(50,430,100,50);
-
-        delButton.setBounds(150,430,100,50);
-
-        clrButton.setBounds(250,430,100,50);
-
+        clrButton.setBounds(155,110,90,50);
 
 
         panel = new JPanel();
 
-        panel.setBounds(50, 100, 300, 300);
+        panel.setBounds(50, 175, 300, 300);
 
         panel.setLayout(new GridLayout(4,4,10,10));
 
@@ -230,6 +256,7 @@ public class Calculator implements ActionListener{
         frame.add(textfield);
 
         frame.add(exit);
+        frame.add(minimize);
 
         frame.add(myLabel);
 
