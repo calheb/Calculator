@@ -29,11 +29,7 @@ public class Calculator implements ActionListener{
         bg = new ImageIcon(this.getClass().getResource("/bg.png"));
         myLabel = new JLabel(bg);
         myLabel.setSize(2000, 2000);
-        Color myColor =  new Color(72, 71, 71,200);
-
-
-
-
+        Color bgFrameColor =  new Color(72, 71, 71,200);
 
         frame = new JFrame("Calculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,7 +39,7 @@ public class Calculator implements ActionListener{
         frame.setLocationRelativeTo(null); //centers frame when program is run
         frame.setUndecorated(true);
         frame.setShape(new RoundRectangle2D.Double(0, 0, 400, 520, 20, 20 ));
-        frame.setBackground(new Color(72, 71, 71,200));
+        frame.setBackground(bgFrameColor);
         frame.addMouseMotionListener(new MouseMotionAdapter() { //this allows the entire frame to be dragged around the screen
             @Override
             public void mouseDragged(MouseEvent e) {
@@ -66,21 +62,6 @@ public class Calculator implements ActionListener{
         textfield.setEditable(false);
         textfield.setBackground(new Color(217,191,217));
         textfield.setBorder(BorderFactory.createLineBorder(new Color(153, 153, 255),1));
-
-        ImageIcon calcIcon = new ImageIcon(this.getClass().getResource("/calculator.png"));
-
-        Image image2 = calcIcon.getImage();
-        Image newimg2 = image2.getScaledInstance(30, 30,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-        calcIcon = new ImageIcon(newimg2);
-
-//        JButton calc = new JButton();
-//        calc.setFocusPainted(false);
-//        calc.setContentAreaFilled(false);
-//        calc.setBorderPainted(false);
-//        calc.setOpaque(false);
-//        calc.setBounds(10,10,35,35);
-//        calc.setIcon(calcIcon);
-
 
 
         ImageIcon closeIcon = new ImageIcon(this.getClass().getResource("/close.png"));
@@ -262,7 +243,6 @@ public class Calculator implements ActionListener{
 
         frame.add(exit);
         frame.add(minimize);
-        //frame.add(calc);
 
         frame.add(myLabel);
 
