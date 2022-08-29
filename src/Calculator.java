@@ -1,10 +1,20 @@
 import javax.swing.*;
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.RoundRectangle2D;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 
 public class Calculator implements ActionListener{
     JFrame frame;
+    ImageIcon bg;
+    JLabel myLabel;
     JTextField textfield;
     JButton[] numberButtons = new JButton[10];
     JButton[] functionButtons = new JButton[9];
@@ -12,33 +22,81 @@ public class Calculator implements ActionListener{
     JButton decButton, equButton, delButton, clrButton, negButton;
     JPanel panel;
 
-    Font myFont = new Font("JetBrains Mono",Font.PLAIN,30);
+    Font myFont = new Font("Helvetica",Font.PLAIN,30);
 
     double num1=0,num2=0,result=0;
     char operator;
 
+    int mouseX;
+    int mouseY;
+
     Calculator(){
 
+        bg = new ImageIcon(this.getClass().getResource("/bg.jpg"));
+        myLabel = new JLabel(bg);
+        myLabel.setSize(2000, 2000);
+
+
         frame = new JFrame("Calculator");
-
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         frame.setSize(420, 550);
 
         frame.setLayout(null);
+        frame.setResizable(false);
+
+        frame.setLocationRelativeTo(null); //centers frame when program is run;
+        frame.setUndecorated(true);
+
+        frame.setShape(new RoundRectangle2D.Double(0, 0, 400, 520, 20, 20 ));
+
+        frame.addMouseMotionListener(new MouseMotionAdapter() { //this allows the entire frame to be dragged around the screen
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                frame.setLocation(frame.getX() + e.getX() - mouseX, frame.getY() + e.getY() - mouseY);
+            }
+        });
+        frame.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                mouseX = e.getX();
+                mouseY = e.getY();
+            }
+        });
 
 
 
         textfield = new JTextField();
 
-        textfield.setBounds(50, 25, 300, 50);
+        textfield.setBounds(50, 35, 300, 50);
 
         textfield.setFont(myFont);
 
         textfield.setEditable(false);
 
 
+        ImageIcon closeIcon = new ImageIcon(this.getClass().getResource("/close.png"));
 
+        Image image = closeIcon.getImage();
+        Image newimg = image.getScaledInstance(18, 18,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        closeIcon = new ImageIcon(newimg);
+
+
+        JButton exit = new JButton();
+        exit.setBorderPainted(false);
+        //exit.setBorder(new RoundedBorder(20));
+        exit.setOpaque(false);
+
+        exit.setBounds(360,10,20,20);
+        exit.setIcon(closeIcon);
+
+        ActionListener al = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        };
+
+        exit.addActionListener(al);
         addButton = new JButton("+");
 
         subButton = new JButton("-");
@@ -86,7 +144,6 @@ public class Calculator implements ActionListener{
             functionButtons[i].setFont(myFont);
 
             functionButtons[i].setFocusable(false);
-
         }
 
 
@@ -100,6 +157,8 @@ public class Calculator implements ActionListener{
             numberButtons[i].setFont(myFont);
 
             numberButtons[i].setFocusable(false);
+
+            //numberButtons[i].setContentAreaFilled(false);
 
         }
 
@@ -118,6 +177,8 @@ public class Calculator implements ActionListener{
         panel.setBounds(50, 100, 300, 300);
 
         panel.setLayout(new GridLayout(4,4,10,10));
+
+        panel.setBackground(new Color(0,0,0,0));
 
 
 
@@ -155,6 +216,9 @@ public class Calculator implements ActionListener{
 
 
 
+
+
+
         frame.add(panel);
 
         frame.add(negButton);
@@ -165,10 +229,34 @@ public class Calculator implements ActionListener{
 
         frame.add(textfield);
 
+        frame.add(exit);
+
+        frame.add(myLabel);
+
         frame.setVisible(true);
 
     }
 
+    private static class RoundedBorder implements Border {
+
+        private int radius;
+
+        RoundedBorder(int radius) {
+            this.radius = radius;
+        }
+
+        public Insets getBorderInsets(Component c) {
+            return new Insets(this.radius+1, this.radius+1, this.radius+2, this.radius);
+        }
+
+        public boolean isBorderOpaque() {
+            return true;
+        }
+
+        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+            g.drawRoundRect(x, y, width-1, height-1, radius, radius);
+        }
+    }
 
 
     public static void main(String[] args) {
