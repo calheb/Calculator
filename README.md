@@ -22,7 +22,7 @@ A simple and clean calculator app in Java.
 </div>
 
 <div class='container'align='center'>
-  <img src="https://github.com/ctrl-alt-caleb/Calculator/blob/master/images/calcgif2.gif" width="600" height="300">
+  <img src="https://github.com/ctrl-alt-caleb/Calculator/blob/master/images/calcgif2.gif" width="600" height="500">
 </div>
 
   
