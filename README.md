@@ -1,5 +1,5 @@
 # Calculator
-Simple calculator app in Java
+A simple and clean calculator app in Java.
   
 ###
 ---
