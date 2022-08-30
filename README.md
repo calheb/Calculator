@@ -17,8 +17,8 @@ Simple calculator app in Java
 
 
 <div class='container'align='center'>
-  <img src="https://github.com/ctrl-alt-caleb/Calculator/blob/master/images/output-onlinegiftools(3).gif" width="294" height="385">&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://github.com/ctrl-alt-caleb/Calculator/blob/master/images/calculator.png" width="294" height="385"><br><br>
+  <img src="https://github.com/ctrl-alt-caleb/Calculator/blob/master/images/calculator.png" width="294" height="385">&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/ctrl-alt-caleb/Calculator/blob/master/images/output-onlinegiftools(3).gif" width="294" height="385"><br><br>
 </div>
 
 <div class='container'align='center'>
@@ -29,7 +29,7 @@ Simple calculator app in Java
 
 ## Description
   
-Just a calculator app in Java made using the Java swing library.
+A calculator app in Java made using the Java swing library.
   ---
   
 ## How To Use
