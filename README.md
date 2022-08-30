@@ -30,7 +30,6 @@ Simple calculator app in Java
 ## Description
   
 A calculator app in Java made using the Java swing library.
-  ---
   
 ## How To Use
 
