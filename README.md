@@ -29,7 +29,7 @@ A simple and clean calculator app in Java.
 
 ## Description
   
-A calculator app in Java made using the Java swing library.
+A calculator app in Java made using the swing library.
   
 ## How To Use
 
