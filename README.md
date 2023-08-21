@@ -37,12 +37,6 @@ A calculator app in Java made using the swing library.
 - Clone the project and build it in your Java IDE of choice.
 
 
-## Author Info
-
-- [LinkedIn](https://linkedin.com/in/calebhebert)
-- [Website](https://calebhebert.com)<br>
-
-
 [Back To The Top](#Calculator)
 
 
